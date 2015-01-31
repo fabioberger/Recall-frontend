@@ -37,6 +37,7 @@ func main() {
 		panic(err)
 	}
 
+	// Routes
 	r := router.New()
 	r.HandleFunc("/", func(params map[string]string) {
 		form := &views.RecallForm{}
