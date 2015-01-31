@@ -2,6 +2,9 @@ package models
 
 import (
 	"strconv"
+
+	"github.com/fabioberger/recall-frontend/go/config"
+	"honnef.co/go/js/dom"
 )
 
 type User struct {
@@ -18,5 +21,6 @@ func (t *User) GetId() string {
 }
 
 func (t *User) RootURL() string {
-	return "http://localhost:8080/users"
+	root := dom.GetWindow().Location().Hostname
+	return "http://" + root + ":" + config.Port + "/users"
 }

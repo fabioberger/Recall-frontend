@@ -2,6 +2,10 @@ package models
 
 import (
 	"strconv"
+
+	"github.com/fabioberger/recall-frontend/go/config"
+
+	"honnef.co/go/js/dom"
 )
 
 type Session struct {
@@ -17,5 +21,6 @@ func (t *Session) GetId() string {
 }
 
 func (t *Session) RootURL() string {
-	return "http://localhost:8080/sessions"
+	root := dom.GetWindow().Location().Hostname
+	return "http://" + root + ":" + config.Port + "/sessions"
 }

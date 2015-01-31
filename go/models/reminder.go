@@ -3,6 +3,10 @@ package models
 import (
 	"strconv"
 	"time"
+
+	"github.com/fabioberger/recall-frontend/go/config"
+
+	"honnef.co/go/js/dom"
 )
 
 type Reminder struct {
@@ -17,7 +21,8 @@ func (t *Reminder) GetId() string {
 }
 
 func (t *Reminder) RootURL() string {
-	return "http://localhost:8080/reminders"
+	root := dom.GetWindow().Location().Hostname
+	return "http://" + root + ":" + config.Port + "/reminders"
 }
 
 func (t *Reminder) GetDate() string {

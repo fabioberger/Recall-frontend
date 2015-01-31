@@ -27875,8 +27875,20 @@ $packages["github.com/fabioberger/humble/view"] = (function() {
 	};
 	return $pkg;
 })();
+$packages["github.com/fabioberger/recall-frontend/go/config"] = (function() {
+	var $pkg = {};
+	$pkg.$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $r, $s = 0; var $init_config = function() { while (true) { switch ($s) { case 0:
+		$pkg.Port = "3000";
+		/* */ } return; } }; $init_config.$blocking = true; return $init_config;
+	};
+	return $pkg;
+})();
 $packages["github.com/fabioberger/recall-frontend/go/models"] = (function() {
-	var $pkg = {}, strconv, time, Reminder, Session, User, ptrType, ptrType$1, ptrType$2;
+	var $pkg = {}, config, dom, strconv, time, Reminder, Session, User, ptrType, ptrType$1, ptrType$2;
+	config = $packages["github.com/fabioberger/recall-frontend/go/config"];
+	dom = $packages["honnef.co/go/js/dom"];
 	strconv = $packages["strconv"];
 	time = $packages["time"];
 	Reminder = $pkg.Reminder = $newType(0, $kindStruct, "models.Reminder", "Reminder", "github.com/fabioberger/recall-frontend/go/models", function(Id_, Reminder_, Timestamp_, Error_) {
@@ -27913,9 +27925,10 @@ $packages["github.com/fabioberger/recall-frontend/go/models"] = (function() {
 	};
 	Reminder.prototype.GetId = function() { return this.$val.GetId(); };
 	Reminder.ptr.prototype.RootURL = function() {
-		var t;
+		var root, t;
 		t = this;
-		return "http://localhost:8080/reminders";
+		root = $internalize(dom.GetWindow().Location().URLUtils.Object.hostname, $String);
+		return "http://" + root + ":" + config.Port + "/reminders";
 	};
 	Reminder.prototype.RootURL = function() { return this.$val.RootURL(); };
 	Reminder.ptr.prototype.GetDate = function() {
@@ -27933,9 +27946,10 @@ $packages["github.com/fabioberger/recall-frontend/go/models"] = (function() {
 	};
 	Session.prototype.GetId = function() { return this.$val.GetId(); };
 	Session.ptr.prototype.RootURL = function() {
-		var t;
+		var root, t;
 		t = this;
-		return "http://localhost:8080/sessions";
+		root = $internalize(dom.GetWindow().Location().URLUtils.Object.hostname, $String);
+		return "http://" + root + ":" + config.Port + "/sessions";
 	};
 	Session.prototype.RootURL = function() { return this.$val.RootURL(); };
 	User.ptr.prototype.GetId = function() {
@@ -27945,9 +27959,10 @@ $packages["github.com/fabioberger/recall-frontend/go/models"] = (function() {
 	};
 	User.prototype.GetId = function() { return this.$val.GetId(); };
 	User.ptr.prototype.RootURL = function() {
-		var t;
+		var root, t;
 		t = this;
-		return "http://localhost:8080/users";
+		root = $internalize(dom.GetWindow().Location().URLUtils.Object.hostname, $String);
+		return "http://" + root + ":" + config.Port + "/users";
 	};
 	User.prototype.RootURL = function() { return this.$val.RootURL(); };
 	ptrType.methods = [{prop: "GetDate", name: "GetDate", pkg: "", type: $funcType([], [$String], false)}, {prop: "GetId", name: "GetId", pkg: "", type: $funcType([], [$String], false)}, {prop: "RootURL", name: "RootURL", pkg: "", type: $funcType([], [$String], false)}];
@@ -27959,8 +27974,10 @@ $packages["github.com/fabioberger/recall-frontend/go/models"] = (function() {
 	$pkg.$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $r, $s = 0; var $init_models = function() { while (true) { switch ($s) { case 0:
-		$r = strconv.$init($BLOCKING); /* */ $s = 1; case 1: if ($r && $r.$blocking) { $r = $r(); }
-		$r = time.$init($BLOCKING); /* */ $s = 2; case 2: if ($r && $r.$blocking) { $r = $r(); }
+		$r = config.$init($BLOCKING); /* */ $s = 1; case 1: if ($r && $r.$blocking) { $r = $r(); }
+		$r = dom.$init($BLOCKING); /* */ $s = 2; case 2: if ($r && $r.$blocking) { $r = $r(); }
+		$r = strconv.$init($BLOCKING); /* */ $s = 3; case 3: if ($r && $r.$blocking) { $r = $r(); }
+		$r = time.$init($BLOCKING); /* */ $s = 4; case 4: if ($r && $r.$blocking) { $r = $r(); }
 		/* */ } return; } }; $init_models.$blocking = true; return $init_models;
 	};
 	return $pkg;
